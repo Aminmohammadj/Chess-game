@@ -420,6 +420,7 @@ bool checkkw(int board[], int i, int j) {
 }
 int main()
 {
+	cout << "Helo" << endl;
 	int a[64];
 	bool turn = 1;
 	for (int i = 0; i < 64; i++)a[i] = i;
