@@ -515,7 +515,178 @@ bool mat1b(int board[])
 			break;
 		}
 	}
-	if(board[shah+1] > 15 && board[shah + 1] < 47)
+	if (board[shah + 1] > 15 && board[shah + 1] < 47)// 8 TA KHONE KHALI KE SHAH MITONE BERE NEVSHTIM KE ON 
+	{                                               // KHONE KHALI HAST YA NA 
+		int temp = board[shah];
+		board[shah] = board[shah + 1];  //AGAR IN KHONE KALI BOD JABEJAYI SORAT BEGIRE
+		board[shah + 1] = temp;
+		if (!kishb(board))re 0;       // MOSAVI BA kishb(board) == 0
+		temp = board[shah];
+		board[shah] = board[shah - 1];// DOBARE IN KAR RO MIKONIM TA DAR SHART BADI BE MOSKEL NAKHORIM
+		board[shah - 1] = temp;       // * VA HAME CHIZ MESLE HALAT AVALIYE BASHE
+	}
+	if (board[shah - 1] > 15 && board[shah - 1] < 47) // == AKAR KHALI BOD IN JABE JAYI RO ANJAM BEDIM
+	{                                                // SHAH BERE ON KHONE
+		int temp = board[shah];
+		board[shah] = board[shah - 1];
+		board[shah - 1] = temp;
+		if (!kishb(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah - 1];
+		board[shah - 1] = temp;
+	}
+	if (board[shah + 8] > 15 && board[shah + 8] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah + 8];
+		board[shah + 8] = temp;
+		if (!kishb(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah + 8];
+		board[shah + 8] = temp;
+	}
+	if (board[shah - 8] > 15 && board[shah - 8] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah - 8];
+		board[shah - 8] = temp;
+		if (!kishb(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah - 8];
+		board[shah - 8] = temp;
+	}
+	if (board[shah + 7] > 15 && board[shah + 7] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah + 7];
+		board[shah + 7] = temp;
+		if (!kishb(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah + 7];
+		board[shah + 7] = temp;
+	}
+	if (board[shah - 7] > 15 && board[shah - 7] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah - 7];
+		board[shah - 7] = temp;
+		if (!kishb(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah - 7];
+		board[shah - 7] = temp;
+	}
+	if (board[shah + 9] > 15 && board[shah + 9] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah + 9];
+		board[shah + 9] = temp;
+		if (!kishb(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah + 9];
+		board[shah + 9] = temp;
+	}
+	if (board[shah - 9] > 15 && board[shah - 9] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah - 9];
+		board[shah - 9] = temp;
+		if(kishb(board) == 0)re 0; //== (!kishb(board))re 0; AGAR KISH SHODI VA re 1; 
+		temp = board[shah];
+		board[shah] = board[shah - 9]; // BE HALAT GABLI BAZ GARD
+		board[shah - 9] = temp;
+	}
+}
+bool mat1W(int board[])
+{
+	int shah;
+	for (int i = 0; i < 64; i++)
+	{
+		if (board[i] == 60)
+		{
+			shah = i;
+			break;
+		}
+	}
+	if (board[shah + 1] > 15 && board[shah + 1] < 47)// 8 TA KHONE KHALI KE SHAH MITONE BERE NEVSHTIM KE ON 
+	{                                               // KHONE KHALI HAST YA NA 
+		int temp = board[shah];
+		board[shah] = board[shah + 1];  //AGAR IN KHONE KALI BOD JABEJAYI SORAT BEGIRE
+		board[shah + 1] = temp;
+		if (!kishw(board))re 0;       // MOSAVI BA kishb(board) == 0
+		temp = board[shah];
+		board[shah] = board[shah - 1];// DOBARE IN KAR RO MIKONIM TA DAR SHART BADI BE MOSKEL NAKHORIM
+		board[shah - 1] = temp;       // * VA HAME CHIZ MESLE HALAT AVALIYE BASHE
+	}
+	if (board[shah - 1] > 15 && board[shah - 1] < 47) // == AKAR KHALI BOD IN JABE JAYI RO ANJAM BEDIM
+	{                                                // SHAH BERE ON KHONE
+		int temp = board[shah];
+		board[shah] = board[shah - 1];
+		board[shah - 1] = temp;
+		if (!kishw(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah - 1];
+		board[shah - 1] = temp;
+	}
+	if (board[shah + 8] > 15 && board[shah + 8] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah + 8];
+		board[shah + 8] = temp;
+		if (!kishw(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah + 8];
+		board[shah + 8] = temp;
+	}
+	if (board[shah - 8] > 15 && board[shah - 8] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah - 8];
+		board[shah - 8] = temp;
+		if (!kishw(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah - 8];
+		board[shah - 8] = temp;
+	}
+	if (board[shah + 7] > 15 && board[shah + 7] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah + 7];
+		board[shah + 7] = temp;
+		if (!kishw(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah + 7];
+		board[shah + 7] = temp;
+	}
+	if (board[shah - 7] > 15 && board[shah - 7] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah - 7];
+		board[shah - 7] = temp;
+		if (!kishw(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah - 7];
+		board[shah - 7] = temp;
+	}
+	if (board[shah + 9] > 15 && board[shah + 9] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah + 9];
+		board[shah + 9] = temp;
+		if (!kishw(board))re 0;
+		temp = board[shah];
+		board[shah] = board[shah + 9];
+		board[shah + 9] = temp;
+	}
+	if (board[shah - 9] > 15 && board[shah - 9] < 47)
+	{
+		int temp = board[shah];
+		board[shah] = board[shah - 9];
+		board[shah - 9] = temp;
+		if (kishw(board) == 0)re 0; //== (!kishb(board))re 0; AGAR KISH SHODI VA re 1; 
+		temp = board[shah];
+		board[shah] = board[shah - 9]; // BE HALAT GABLI BAZ GARD
+		board[shah - 9] = temp;
+	}
 }
 
 int main()
@@ -643,4 +814,3 @@ int main()
 		}
 	}
 }
-
