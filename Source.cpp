@@ -17,7 +17,7 @@ void print(int board[]) {
 	char cha = 'A';
 	cout << endl;
 	for (int i = 1; i < 9; i++)
-		cout << "    " << i << "  ";
+         cout << "    " << i << "  ";
 	cout << endl;
 	k = 15;
 	{cout << char(218);
@@ -418,9 +418,20 @@ bool checkkw(int board[], int i, int j) {
 	}
 	re 0;
 }
+bool kishb(int board[])
+{
+	int mabda, magsad;
+	for (int i = 0; i < 64; i++)
+	{
+		if (board[i] == 4)
+		{ 
+			magsad = i;
+		    break;
+         }
+	}
+}
 int main()
 {
-	cout << "Helo" << endl;
 	int a[64];
 	bool turn = 1;
 	for (int i = 0; i < 64; i++)a[i] = i;
@@ -433,68 +444,100 @@ int main()
 		int i = 0, j = 0;
 		i = ((s[0] - 97) * 8) + ((s[1] - 48) - 1);
 		j = ((s[4] - 97) * 8) + ((s[5] - 48) - 1);
-		if (turn)
+		if (a[i] < 16)
 		{
-			if (a[i] == 1 || a[i] == 6)
+			if (turn == 1) // OR turn
 			{
-				if (checkab(a, i, j))check = 1;
-			}
-			if (a[i] < 16 && a[i]>7)
-			{
-				if (checksb(a, i, j))check = 1;
-			}
-			if (a[i] == 0 || a[i] == 7)
-			{
-				if (checkrb(a, i, j))check = 1;
-			}
-			if (a[i] == 2 || a[i] == 5)
-			{
-				if (checkfb(a, i, j))check = 1;
-			}
-			if (a[i] == 3)
-			{
-				if (checkfb(a, i, j))check = 1;
-				if (checkrb(a, i, j))check = 1;
-			}
-			if (a[i] == 4) {
-				if (checkkb(a, i, j))check = 1;
-			}
-		}
-
-			if (a[i] == 56 || a[i] == 63) {
-				if (checkrw(a, i, j))check = 1;
-			}
-			if (a[i] == 57 || a[i] == 62) {
-				if (checkaw(a, i, j))check = 1;
-			}
-			if (a[i] < 56 && a[i]>47) {
-				if (checksw(a, i, j))check = 1;
-			}
-			if (a[i] == 58 || a[i] == 61) {
-				if (checkfw(a, i, j))check = 1;
-			}
-			if (a[i] == 59) {
-				if (checkfw(a, i, j))check = 1;
-				if (checkrw(a, i, j))check = 1;
-			}
-			if (a[i] == 60) {
-				if (checkkw(a, i, j))check = 1;
-			}
-			if (check)
-			{
-				turn = !turn;
-				int temp = a[i];
-				a[i] = a[j];
-				a[j] = temp;
-				if (a[i] < 16 || a[i]>47)a[i] = 16;
-				system("cls");
-				print(a);
+				if (a[i] == 1 || a[i] == 6)
+				{
+					if (checkab(a, i, j))check = 1;
+				}
+				if (a[i] < 16 && a[i]>7)
+				{
+					if (checksb(a, i, j))check = 1;
+				}
+				if (a[i] == 0 || a[i] == 7)
+				{
+					if (checkrb(a, i, j))check = 1;
+				}
+				if (a[i] == 2 || a[i] == 5)
+				{
+					if (checkfb(a, i, j))check = 1;
+				}
+				if (a[i] == 3)
+				{
+					if (checkfb(a, i, j))check = 1;
+					if (checkrb(a, i, j))check = 1;
+				}
+				if (a[i] == 4) {
+					if (checkkb(a, i, j))check = 1;
+				}
+				if (check==1)
+				{
+					turn = !turn;
+					int temp = a[i];
+					a[i] = a[j];
+					a[j] = temp;
+					if (a[i] < 16 || a[i]>47)a[i] = 16;
+					system("cls");
+					print(a);
+				}
+				else
+				{
+					cout << "ERROR            MAGSAD MORED GABOL NIST\n ";
+				}
 			}
 			else
 			{
-				cout << "ERROR                 MAGHSAD MORED GHABOL NIST\n";
+				cout << "ERROR            NOBAT SEFID AST\n ";
 			}
-		
+		}
+		else if (a[i] > 47)
+		{
+			if (!turn) // OR turn == 0
+			{
+				if (a[i] == 56 || a[i] == 63) {
+					if (checkrw(a, i, j))check = 1;
+				}
+				if (a[i] == 57 || a[i] == 62) {
+					if (checkaw(a, i, j))check = 1;
+				}
+				if (a[i] < 56 && a[i]>47) {
+					if (checksw(a, i, j))check = 1;
+				}
+				if (a[i] == 58 || a[i] == 61) {
+					if (checkfw(a, i, j))check = 1;
+				}
+				if (a[i] == 59) {
+					if (checkfw(a, i, j))check = 1;
+					if (checkrw(a, i, j))check = 1;
+				}
+				if (a[i] == 60) {
+					if (checkkw(a, i, j))check = 1;
+				}
+				if (check)
+				{
+					turn = !turn;
+					int temp = a[i];
+					a[i] = a[j];
+					a[j] = temp;
+					if (a[i] < 16 || a[i]>47)a[i] = 16;
+					system("cls");
+					print(a);
+				}
+				else
+				{
+					cout << "ERROR            MAGSAD MORED GABOL NIST\n ";
+				}
+			}
+			else
+			{
+				cout << "ERROR            NOBAT SIAH AST\n ";
+			}
+		}
+		else
+		{
+			cout << "ERROR            MABDA MORED GABOL NIST\n ";
+		}
 	}
 }
-
