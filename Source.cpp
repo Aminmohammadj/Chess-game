@@ -424,12 +424,100 @@ bool kishb(int board[])
 	for (int i = 0; i < 64; i++)
 	{
 		if (board[i] == 4)
-		{ 
+		{
 			magsad = i;
-		    break;
-         }
+			break;
+		}
+	}
+	for (int i = 48; i <= 64; i++)
+	{
+		for (int j = 0; j < 64; j++)
+		{
+			if (board[j] == i)
+			{
+				mabda = j;
+				break;
+			}
+		}
+		if (mabda == 56 || mabda == 63) {
+			if (checkrw(board, mabda, magsad))re 1;
+		}
+		if (mabda == 57 || mabda == 62) {
+			if (checkaw(board, mabda, magsad))re 1;
+		}
+		if (mabda < 56 && mabda>47) {
+			if (checksw(board, mabda, magsad))re 1;
+		}
+		if (mabda == 58 || mabda == 61) {
+			if (checkfw(board, mabda, magsad))re 1;
+		}
+		if (mabda == 59) {
+			if (checkfw(board, mabda, magsad))re 1;
+			if (checkrw(board, mabda, magsad))re 1;
+		}
+		if (mabda == 60) {
+			if (checkkw(board, mabda, magsad))re 1;
+		}
+		re 0;
 	}
 }
+bool kishw(int board[])
+{
+	int mabda, magsad;
+	for (int i = 0; i < 64; i++)
+	{
+		if (board[i] == 60)
+		{
+			magsad = i;
+			break;
+		}
+	}
+	for (int i = 0; i < 16; i++)
+	{
+		for (int j = 0; j < 64; j++)
+		{
+			if (board[j] == i)
+			{
+				mabda = j;
+				break;
+			}
+		}
+		if (mabda == 0 || mabda == 7) {
+			if (checkrb(board, mabda, magsad))re 1;
+		}
+		if (mabda == 1 || mabda == 6) {
+			if (checkab(board, mabda, magsad))re 1;
+		}
+		if (mabda < 16 && mabda > 7) {
+			if (checksb(board, mabda, magsad))re 1;
+		}
+		if (mabda == 2 || mabda == 5) {
+			if (checkfb(board, mabda, magsad))re 1;
+		}
+		if (mabda == 3) {
+			if (checkfb(board, mabda, magsad))re 1;
+			if (checkrb(board, mabda, magsad))re 1;
+		}
+		if (mabda == 4) {
+			if (checkkb(board, mabda, magsad))re 1;
+		}
+		re 0;
+	}
+}
+bool mat1b(int board[])
+{
+	int shah;
+	for (int i = 0; i < 64; i++)
+	{
+		if (board[i] == 4)
+		{
+			shah = i;
+			break;
+		}
+	}
+	if(board[shah+1] > 15 && board[shah + 1] < 47)
+}
+
 int main()
 {
 	int a[64];
@@ -448,43 +536,50 @@ int main()
 		{
 			if (turn == 1) // OR turn
 			{
-				if (a[i] == 1 || a[i] == 6)
+				if (kishb(a) == 0)
 				{
-					if (checkab(a, i, j))check = 1;
-				}
-				if (a[i] < 16 && a[i]>7)
-				{
-					if (checksb(a, i, j))check = 1;
-				}
-				if (a[i] == 0 || a[i] == 7)
-				{
-					if (checkrb(a, i, j))check = 1;
-				}
-				if (a[i] == 2 || a[i] == 5)
-				{
-					if (checkfb(a, i, j))check = 1;
-				}
-				if (a[i] == 3)
-				{
-					if (checkfb(a, i, j))check = 1;
-					if (checkrb(a, i, j))check = 1;
-				}
-				if (a[i] == 4) {
-					if (checkkb(a, i, j))check = 1;
-				}
-				if (check==1)
-				{
-					turn = !turn;
-					int temp = a[i];
-					a[i] = a[j];
-					a[j] = temp;
-					if (a[i] < 16 || a[i]>47)a[i] = 16;
-					system("cls");
-					print(a);
+					if (a[i] == 1 || a[i] == 6)
+					{
+						if (checkab(a, i, j))check = 1;
+					}
+					if (a[i] < 16 && a[i]>7)
+					{
+						if (checksb(a, i, j))check = 1;
+					}
+					if (a[i] == 0 || a[i] == 7)
+					{
+						if (checkrb(a, i, j))check = 1;
+					}
+					if (a[i] == 2 || a[i] == 5)
+					{
+						if (checkfb(a, i, j))check = 1;
+					}
+					if (a[i] == 3)
+					{
+						if (checkfb(a, i, j))check = 1;
+						if (checkrb(a, i, j))check = 1;
+					}
+					if (a[i] == 4) {
+						if (checkkb(a, i, j))check = 1;
+					}
+					if (check == 1)
+					{
+						turn = !turn;
+						int temp = a[i];
+						a[i] = a[j];
+						a[j] = temp;
+						if (a[i] < 16 || a[i]>47)a[i] = 16;
+						system("cls");
+						print(a);
+					}
+					else
+					{
+						cout << "ERROR            MAGSAD MORED GABOL NIST\n ";
+					}
 				}
 				else
 				{
-					cout << "ERROR            MAGSAD MORED GABOL NIST\n ";
+					cout << "KISH ETEFAG OFTADE\n"; 
 				}
 			}
 			else
@@ -496,6 +591,8 @@ int main()
 		{
 			if (!turn) // OR turn == 0
 			{
+				if(!kish(a)) // == kish(a)==0
+				{ 
 				if (a[i] == 56 || a[i] == 63) {
 					if (checkrw(a, i, j))check = 1;
 				}
@@ -530,6 +627,11 @@ int main()
 					cout << "ERROR            MAGSAD MORED GABOL NIST\n ";
 				}
 			}
+			}
+			else
+			{
+				cout << "KISH ETEFAG OFTADE\n";
+			}
 			else
 			{
 				cout << "ERROR            NOBAT SIAH AST\n ";
@@ -541,3 +643,4 @@ int main()
 		}
 	}
 }
+
