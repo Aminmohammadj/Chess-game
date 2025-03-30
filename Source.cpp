@@ -596,7 +596,7 @@ bool mat1b(int board[])
 		board[shah - 9] = temp;
 	}
 }
-bool mat1W(int board[])
+bool mat1w(int board[])
 {
 	int shah;
 	for (int i = 0; i < 64; i++)
@@ -688,7 +688,166 @@ bool mat1W(int board[])
 		board[shah - 9] = temp;
 	}
 }
-
+bool mat2b(int board[])
+{
+	int o, p;
+	for (int i = 48; i <= 64; i++)
+	{
+		p = i;
+		for (int j = 0; j < 64; j++)
+		{
+			if (board[j] == i)
+			{
+				o = j;
+				break;
+			}
+		}
+		board[o] == 16;
+		if (!kishb(board))
+		{
+			board[o] = i;
+			int mabda, magsad;
+			for (int i = 0; i < 64; i++)
+			{
+				if (board[i] == p)
+				{
+					magsad = i;
+					break;
+				}
+			}
+			for (int i = 48; i <= 64; i++)
+			{
+				for (int j = 0; j < 64; j++)
+				{
+					if (board[j] == i)
+					{
+						mabda = j;
+						break;
+					}
+				}
+				if (mabda == 56 || mabda == 63) {
+					if (checkrw(board, mabda, magsad))re 0;
+				}
+				if (mabda == 57 || mabda == 62) {
+					if (checkaw(board, mabda, magsad))re 0;
+				}
+				if (mabda < 56 && mabda>47) {
+					if (checksw(board, mabda, magsad))re 0;
+				}
+				if (mabda == 58 || mabda == 61) {
+					if (checkfw(board, mabda, magsad))re 0;
+				}
+				if (mabda == 59) {
+					if (checkfw(board, mabda, magsad))re 0;
+					if (checkrw(board, mabda, magsad))re 0;
+				}
+				if (mabda == 60) {
+					if (checkkw(board, mabda, magsad))re 0;
+				}
+			}
+			board[o] = i; // AGAR KISH SHODE BOD BAZ MEGDAR i RO DAKHELESH BEZAR
+		}
+	}
+	re 1;
+}
+bool mat2w(int board[])
+{
+	int o, p;
+	for (int i = 48; i <= 64; i++)
+	{
+		p = i;
+		for (int j = 0; j < 64; j++)
+		{
+			if (board[j] == i)
+			{
+				o = j;
+				break;
+			}
+		}
+		board[o] == 16;
+		if (!kishb(board))
+		{
+			board[o] = i;
+			int mabda, magsad;
+			for (int i = 0; i < 64; i++)
+			{
+				if (board[i] == p)
+				{
+					magsad = i;
+					break;
+				}
+			}
+			for (int i = 48; i <= 64; i++)
+			{
+				for (int j = 0; j < 64; j++)
+				{
+					if (board[j] == i)
+					{
+						mabda = j;
+						break;
+					}
+				}
+				if (mabda == 0 || mabda == 7) {
+					if (checkrb(board, mabda, magsad))re 0;
+				}
+				if (mabda == 1 || mabda == 6) {
+					if (checkab(board, mabda, magsad))re 0;
+				}
+				if (mabda < 16 && mabda > 7) {
+					if (checksb(board, mabda, magsad))re 0;
+				}
+				if (mabda == 2 || mabda == 5) {
+					if (checkfb(board, mabda, magsad))re 0;
+				}
+				if (mabda == 3) {
+					if (checkfb(board, mabda, magsad))re 0;
+					if (checkrb(board, mabda, magsad))re 0;
+				}
+				if (mabda == 4) {
+					if (checkkb(board, mabda, magsad))re 0;
+				}
+			}
+			board[o] = i; // AGAR KISH SHODE BOD BAZ MEGDAR i RO DAKHELESH BEZAR
+		}
+	}
+	re 1;
+}
+bool mat3b(int board[]) {
+	int shah;
+	for (int i = 0; i < 64; i++) // board[shah] == ADRES SHAH RO DARE
+	{
+		if (board[i] == 4)
+		{
+			shah = i;
+			break;
+		}
+	}
+	int o, p;
+	for (int i = 48; i <= 64; i++)// board[o] == KHANE I KE BAES KISH SHODE
+	{
+		p = i;
+		for (int j = 0; j < 64; j++)
+		{
+			if (board[j] == i)
+			{
+				o = j;
+				break;
+			}
+		}
+		board[o] == 16;
+		if (!kishb(board))
+		{
+			board[o] = i;
+			if (board[o] != 57 || board[o] != 62 board[o] > 57)
+			{
+				int temp = abs(o - shah);
+				if(temp%8==0)
+			}
+		}
+		board[o] = i;
+	}
+	re 1;
+}
 int main()
 {
 	int a[64];
@@ -814,3 +973,39 @@ int main()
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+int mabda, maghsad;
+			for (int i = 0; i < 64; i++)
+			{
+				if (board[i] == p)
+				{
+					maghsad = i;
+					break;
+				}
+			}
+			for (int i = 48; i < 64; i++)
+			{
+				for (int j = 0; j < 64; j++)
+				{
+					if (board[j] == i)
+						mabda = j;
+				}
+			}
+*/
